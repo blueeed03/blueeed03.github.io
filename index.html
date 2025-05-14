@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>应届毕业生简历 - 蓝梓翰</title>
+    <style>
+        /* 全局样式 */
+        :root {
+            --primary: #4a89dc;
+            --secondary: #3ba0ff;
+            --light: #f5f7fa;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+        
+        /* 布局 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 简历卡片 */
+        .resume-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 40px 0;
+            overflow: hidden;
+        }
+        
+        /* 头部区域 */
+        .resume-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .name {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .title {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        /* 主体内容 */
+        .resume-body {
+            display: flex;
+            padding: 0;
+        }
+        
+        /* 左侧栏 */
+        .left-column {
+            flex: 0 0 280px;
+            padding: 30px;
+            background-color: #f9fbfd;
+        }
+        
+        /* 右侧栏 */
+        .right-column {
+            flex: 1;
+            padding: 30px;
+        }
+        
+        /* 各部分标题 */
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(74, 137, 220, 0.2);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        /* 教育背景 */
+        .education-item {
+            margin-bottom: 20px;
+        }
+        
+        .degree {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .school {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .gpa {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        /* 技能 */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .skill-item {
+            background-color: var(--white);
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .skill-bar {
+            height: 6px;
+            background-color: #e0e6ed;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        /* 实习经历 */
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e0e6ed;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .job-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .company {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .job-date {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .job-description {
+            color: #555;
+            font-size: 15px;
+        }
+        
+        .job-description ul {
+            padding-left: 20px;
+        }
+        
+        .job-description li {
+            margin-bottom: 5px;
+        }
+        
+        /* 项目经验 */
+        .project-item {
+            margin-bottom: 25px;
+            background-color: #f9fbfd;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .project-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .tech-tag {
+            background-color: #e1f0ff;
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+        
+        .project-description {
+            color: #555;
+            font-size: 15px;
+        }
+        
+        /* 荣誉奖项 */
+        .award-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .award-icon {
+            color: var(--primary);
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        
+        .award-content {
+            flex: 1;
+        }
+        
+        .award-title {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .award-date {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .resume-body {
+                flex-direction: column;
+            }
+            
+            .left-column {
+                flex: auto;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="resume-card">
+            <!-- 头部 -->
+            <div class="resume-header">
+                <img src="地图.png" width="175" height="200">
+                <h1 class="name">蓝梓翰</h1>
+                <p class="title">计算机科学应届毕业生</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <span>+86 177 2832 0263</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>lanzihan2003@163.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span>广东东莞</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github contact-icon"></i>
+                        <span>blueeed03.github.io</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 主体内容 -->
+            <div class="resume-body">
+                <!-- 左侧栏 -->
+                <div class="left-column">
+                    <!-- 教育背景 -->
+                    <div class="section">
+                        <h3 class="section-title">教育背景</h3>
+                        <div class="education-item">
+                            <div class="degree">数据科学与大数据技术 学士</div>
+                            <div class="school">广东财经大学</div>
+                            <div class="date">2021.09 - 2025.06</div>
+                            <div class="gpa">GPA: 3.3/5.0 (专业前50%)</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 专业技能 -->
+                    <div class="section">
+                        <h3 class="section-title">专业技能</h3>
+                        <div class="skills-container">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Python</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>SQL</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Matlab</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>JavaScript</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>MySQL</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Spring Boot</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 语言能力 -->
+                    <div class="section">
+                        <h3 class="section-title">语言能力</h3>
+                        <div class="skills-container">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>英语</span>
+                                    <span>CET-4</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 荣誉奖项 -->
+                    <div class="section">
+                        <h3 class="section-title">荣誉奖项</h3>
+                        <div class="award-item">
+                            <i class="fas fa-trophy award-icon"></i>
+                            <div class="award-content">
+                                <div class="award-title">校学业优秀奖学金</div>
+                                <div class="award-date">2023-2024</div>
+                            </div>
+                        </div>
+                        <div class="award-item">
+                            <i class="fas fa-trophy award-icon"></i>
+                            <div class="award-content">
+                                <div class="award-title">校学术科研奖学金</div>
+                                <div class="award-date">2023-2024</div>
+                            </div>
+                        </div>
+                        <div class="award-item">
+                            <i class="fas fa-medal award-icon"></i>
+                            <div class="award-content">
+                                <div class="award-title">全国大学生统计建模大赛 省一</div>
+                                <div class="award-date">2024</div>
+                            </div>
+                        </div>
+                        <div class="award-item">
+                            <i class="fas fa-medal award-icon"></i>
+                            <div class="award-content">
+                                <div class="award-title">全国大学生数学建模大赛 省二</div>
+                                <div class="award-date">2023</div>
+                            </div>
+                        </div>
+                        <div class="award-item">
+                            <i class="fas fa-award award-icon"></i>
+                            <div class="award-content">
+                                <div class="award-title">“三下乡”社会实践优秀团队</div>
+                                <div class="award-date">2022</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 右侧栏 -->
+                <div class="right-column">
+                    <!-- 个人简介 -->
+                    <div class="section">
+                        <h3 class="section-title">个人简介</h3>
+                        <p style="color: #555; font-size: 15px; line-height: 1.7;">
+                            广东财经大学数据科学与大数据技术专业应届毕业生，具备扎实的数据分析、算法和编程基础。在校期间主修数据采集与处理、数据库、机器学习、大数据技术和统计学相关等课程，参与多个实际项目开发。热爱技术学习，有良好的团队协作能力和沟通能力，希望从事软件开发相关工作。
+                        </p>
+                    </div>
+                    
+                    <!-- 实习经历 -->
+                    <div class="section">
+                        <h3 class="section-title">实习经历</h3>
+                        <div class="experience-item">
+                            <div class="job-title">技术部实习生</div>
+                            <div class="company">东莞市数汇大数据有限公司（东莞交投子公司） - 东莞</div>
+                            <div class="job-date">2025.03 - 2025.05</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">机器视觉</span>
+                                <span class="tech-tag">模型调优</span>
+                            </div>
+                            <div class="job-description">
+                                <ul>
+                                    <li>参与电商平台后端服务开发，使用Spring Boot框架实现商品搜索功能</li>
+                                    <li>优化数据库查询性能，使响应时间减少30%</li>
+                                    <li>编写单元测试和集成测试，代码覆盖率提升至85%</li>
+                                    <li>参与Code Review和技术文档编写</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- 项目&竞赛经历 -->
+                    <div class="section">
+                        <h3 class="section-title">项目&竞赛经验</h3>
+                        <!-- 项目 -->
+                        <div class="project-item">
+                            <div class="project-title">广东财经大学“双百工程”自然科学类研究</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">校级重点</span>
+                                <span class="tech-tag">队长</span>
+                                <span class="tech-tag">时序模型</span>
+                                <span class="tech-tag">2023.11</span>
+                            </div>
+                            <div class="project-description">
+                                <ul>
+                                    <li>课题：粤港澳大湾区建筑垃圾碳排放智能估算与可持续管理研究</li>
+                                    <li>内容：整合多源数据（市政统计+卫星遥感），通过ArcGIS空间区域分析，构建LSTM时序模型对建筑垃圾全生命周期流程碳排放就行预测</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item">
+                            <div class="project-title">基于VGG19的卷积神经网络商标图像分类模型</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">机器视觉</span>
+                                <span class="tech-tag">图像分类</span>
+                                <span class="tech-tag">2023.12</span>
+                            </div>
+                            <div class="project-description">
+                                <ul>
+                                    <li>课题：200类商标图像分类识别</li>
+                                    <li>内容：采集200类商标图像各70-100张，使用OpenCV完成图像预处理与标准化，基于Pytorch搭建VGG19模型，实施图像数据增强策略（随机裁剪、旋转）提升模型泛化能力</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-title">广东省大学生创新训练项目</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">省级</span>
+                                <span class="tech-tag">队长</span>
+                                <span class="tech-tag">时序模型</span>
+                                <span class="tech-tag">2024.06</span>
+                            </div>
+                            <div class="project-description">
+                                <ul>
+                                    <li>课题：粤港澳大湾区建筑垃圾碳排放智能估算与可持续管理研究</li>
+                                    <li>内容：整合多源数据（市政统计+卫星遥感），通过ArcGIS空间区域分析，构建LSTM时序模型对建筑垃圾全生命周期流程碳排放就行预测</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 竞赛 -->
+                        <div class="project-item">
+                            <div class="project-title">全国大学生数学建模大赛</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">省二等奖</span>
+                                <span class="tech-tag">队长</span>
+                                <span class="tech-tag">目标规划</span>
+                                <span class="tech-tag">2023.09</span>
+                            </div>
+                            <div class="project-description">
+                                <ul>
+                                    <li>课题：商超蔬菜补货与定价策略优化研究</li>
+                                    <li>内容：通过Pandas清洗80万+条销售数据，使用Matlab构建多目标规划模型，结合时间序列分析预测需求波动，优化定价策略</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-title">广东财经大学“沁湖杯”大数据创新与应用大赛</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">第二名</span>
+                                <span class="tech-tag">队长</span>
+                                <span class="tech-tag">评价模型</span>
+                                <span class="tech-tag">2024.04</span>
+                            </div>
+                            <div class="project-description">
+                                <ul>
+                                    <li>课题：基于数据属性角度的公共数据质量变权综合评价模型研究</li>
+                                    <li>内容：该评价模型应用于广州市政务数据平台数据，引入评价规则与评价指标，通过变权函数设计动态变权综合评价模型</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-title">全国大学生统计建模大赛</div>
+                            <div class="project-tech">
+                                <span class="tech-tag">省一等奖</span>
+                                <span class="tech-tag">队长</span>
+                                <span class="tech-tag">时空预测</span>
+                                <span class="tech-tag">2024.05</span>
+                            </div>
+                            <div class="project-description">
+                                <ul>
+                                    <li>课题：城市路网交通流量时空演变态势研究——以深圳市为例</li>
+                                    <li>内容：基于Pytorch搭建时空图神经网络DCRNN、GWNet和STID模型，输入深圳市交通数据（规模570万+），捕获时空依赖关系</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+
+                    <!-- 校园活动 -->
+                    <div class="section">
+                        <h3 class="section-title">校园活动</h3>
+                        <div class="experience-item">
+                            <div class="job-title">校乒乓球协会部长/院乒乓球协会副会长</div>
+                            <div class="company">广东财经大学乒乓球协会</div>
+                            <div class="job-date">2022.09 - 2023.06</div>
+                            <div class="job-description">
+                                <ul>
+                                    <li>参与组织“校园体育节乒乓球赛”，参与人数超过150人</li>
+                                    <li>策划"院际杯乒乓球赛"活动，全校所有院队参赛</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
